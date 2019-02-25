@@ -5,6 +5,8 @@ import { renderToString } from 'react-dom/server'
 
 const app = express()
 
+app.use(express.static('public'))
+
 const content = renderToString(<Home />)
 
 app.get('/', (req, res) => {
@@ -15,6 +17,7 @@ app.get('/', (req, res) => {
       </head>
       <body>
         ${content}
+        <script src='/index.js'></script>
       </body>
     </html> 
   `)
