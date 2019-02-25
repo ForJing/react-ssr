@@ -1,7 +1,7 @@
-const React = require('react')
+import React from 'react'
 
-const Home = () => <div>Home</div>
-
-module.exports = {
-  default: Home,
+const Home = () => {
+  return <div>hello asdf world</div>
 }
+
+export default Home
