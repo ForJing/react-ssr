@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header'
+import { connect } from 'react-redux'
 
 const Home = () => {
   return (
@@ -11,4 +12,8 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = state => ({
+  name: state.name,
+})
+
+export default connect(mapStateToProps)(Home)
