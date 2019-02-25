@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+const Home = require('./containers/Home')
+
 app.get('/', (req, res) => {
   res.send(
     `
@@ -20,4 +22,6 @@ app.get('/', (req, res) => {
   )
 })
 
-app.listen(8087)
+app.listen(8087, () => {
+  console.log('server running at http://localhost:8087')
+})
