@@ -1,22 +1,15 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
+const merge = require('webpack-merge')
+const config = require('./webpack.base.js')
 
-module.exports = {
+module.exports = merge(config, {
   target: 'node', // in order to ignore built-in modules like path, fs, etc.
   externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/server/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
-      },
-    ],
-  },
-}
+})
