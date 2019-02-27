@@ -9,7 +9,7 @@ const reducer = (state = { name: 'dearest' }, action) => {
   return state
 }
 
-let store
+let getStore
 if (isBrowser()) {
   const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -22,9 +22,9 @@ if (isBrowser()) {
     applyMiddleware(thunk)
     // other store enhancers if any
   )
-  store = createStore(reducer, enhancer)
+  getStore = () => createStore(reducer, enhancer)
 } else {
-  store = createStore(reducer)
+  getStore = () => createStore(reducer, applyMiddleware(thunk))
 }
 
-export default store
+export default getStore
